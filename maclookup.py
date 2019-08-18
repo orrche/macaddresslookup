@@ -10,6 +10,8 @@ search = "00:1B:C5:0C:91:87"
 def maclookup(search):
     with open("macaddress.io-db.json", "r") as json_file:
         d = "[" + json_file.read()[:-1].replace("\n", ",\n") + "]"
+        json_file.close()
+
         data = json.loads(d)
     
         ret = None
