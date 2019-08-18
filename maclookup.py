@@ -19,7 +19,7 @@ def maclookup(search):
             if search.startswith(reg["oui"]):
                 if ret == None:
                     ret = reg
-                if len(ret["oui"]) < reg["oui"]:
+                if len(ret["oui"]) < len(reg["oui"]):
                     ret = reg
 
         return ret
@@ -29,14 +29,14 @@ def maclookup(search):
 if __name__ == "__main__":
     import sys
     if len(sys.argv) != 2:
-        print "Usage: " + sys.argv[0] + " address|test"
+        print ("Usage: " + sys.argv[0] + " address|test")
         sys.exit(1)
 
     if sys.argv[1] == "test":
         if maclookup("00:1B:C5:0C:91:87")["oui"] != "00:1B:C5:0C:9":
-            print "FAIL"
+            print("FAIL")
         if maclookup("04:92:26:da:f1:87")["oui"] != "04:92:26":
-            print "FAIL"
+            print("FAIL")
     else:
         print(maclookup(sys.argv[1]))
 
